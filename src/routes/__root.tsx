@@ -76,10 +76,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Handcrafted sweets and jar cakes made to order by Mary. Order easily via WhatsApp." },
       { name: "author", content: "Mary's Bakery" },
       { property: "og:title", content: "Mary's Bakery — Handcrafted American Confections" },
-      { property: "og:description", content: "Handcrafted sweets and jar cakes made to order by Mary." },
+      { property: "og:description", content: "Handcrafted sweets and jar cakes made to order by Mary. Order easily via WhatsApp." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Mary's Bakery — Handcrafted American Confections" },
+      { name: "twitter:description", content: "Handcrafted sweets and jar cakes made to order by Mary. Order easily via WhatsApp." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2d020a2a-a79e-4d1e-ae41-9e2b6928e248/id-preview-7c745ffe--58751105-e9eb-4243-a8f8-411c9fd646c4.lovable.app-1779772090873.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2d020a2a-a79e-4d1e-ae41-9e2b6928e248/id-preview-7c745ffe--58751105-e9eb-4243-a8f8-411c9fd646c4.lovable.app-1779772090873.png" },
     ],
     links: [
       {
