@@ -4,11 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
-  HeadContent,
-  Scripts,
 } from "@tanstack/react-router";
-
-import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
   return (
@@ -43,7 +39,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           This page didn't load
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          Something went wrong. You can try refreshing or head back home.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -68,49 +64,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Mary's Bakery — Handcrafted American Confections" },
-      { name: "description", content: "Handcrafted sweets and jar cakes made to order by Mary. Order easily via WhatsApp." },
-      { name: "author", content: "Mary's Bakery" },
-      { property: "og:title", content: "Mary's Bakery — Handcrafted American Confections" },
-      { property: "og:description", content: "Handcrafted sweets and jar cakes made to order by Mary. Order easily via WhatsApp." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Mary's Bakery — Handcrafted American Confections" },
-      { name: "twitter:description", content: "Handcrafted sweets and jar cakes made to order by Mary. Order easily via WhatsApp." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2d020a2a-a79e-4d1e-ae41-9e2b6928e248/id-preview-7c745ffe--58751105-e9eb-4243-a8f8-411c9fd646c4.lovable.app-1779772090873.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2d020a2a-a79e-4d1e-ae41-9e2b6928e248/id-preview-7c745ffe--58751105-e9eb-4243-a8f8-411c9fd646c4.lovable.app-1779772090873.png" },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
-  }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
-
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
