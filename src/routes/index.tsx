@@ -21,7 +21,7 @@ export const Route = createFileRoute("/")({
 });
 
 const WA_NUMBER = "5500000000000";
-const PHONE_DISPLAY = "(066) 99999-0000";
+const PHONE_DISPLAY = "(555) 000-0000";
 
 const waLink = (message: string) =>
   `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
