@@ -10,6 +10,11 @@ import {
   Phone,
   ChevronRight,
 } from "lucide-react";
+import nutellaImg from "@/assets/nutella-jar-cake.jpg";
+import pistachioImg from "@/assets/pistachio-jar-cake.jpg";
+import palhaImg from "@/assets/palha-italiana.jpg";
+import customImg from "@/assets/custom-flavors.jpg";
+import aboutImg from "@/assets/about-mary.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -26,6 +31,7 @@ type Product = {
   name: string;
   description: string;
   price: string;
+  image: string;
   badge?: { label: string; tone: "featured" | "new" };
   variants?: string[];
   ctaLabel: string;
@@ -39,31 +45,34 @@ const products: Product[] = [
     name: "Nutella Jar Cake",
     description:
       "Layers of moist chocolate cake, silky Nutella ganache and a generous swirl on top.",
-    price: "R$ 20",
+    price: "$ 20",
+    image: nutellaImg,
     badge: { label: "Featured", tone: "featured" },
     ctaLabel: "Order on WhatsApp",
-    waMessage: "Hi Mari! I'd love to order a Nutella Jar Cake 🤍",
+    waMessage: "Hi Mary! I'd love to order a Nutella Jar Cake 🤍",
   },
   {
     id: "pistachio",
     name: "Pistachio Jar Cake",
     description:
       "Delicate vanilla sponge layered with house-made pistachio cream and crushed nuts.",
-    price: "R$ 20",
+    price: "$ 20",
+    image: pistachioImg,
     badge: { label: "New", tone: "new" },
     ctaLabel: "Order on WhatsApp",
-    waMessage: "Hi Mari! I'd love to order a Pistachio Jar Cake 🤍",
+    waMessage: "Hi Mary! I'd love to order a Pistachio Jar Cake 🤍",
   },
   {
     id: "palha",
     name: "Palha Italiana",
     description:
-      "Classic Brazilian brigadeiro pressed with buttery biscuit pieces. A timeless treat.",
-    price: "R$ 6",
-    variants: ["1 for R$ 6", "2 for R$ 7"],
+      "Classic chocolate fudge pressed with buttery biscuit pieces. A timeless treat.",
+    price: "$ 6",
+    image: palhaImg,
+    variants: ["1 for $ 6", "2 for $ 7"],
     badge: { label: "New", tone: "new" },
     ctaLabel: "Order on WhatsApp",
-    waMessage: "Hi Mari! I'd love to order Palha Italiana 🤍",
+    waMessage: "Hi Mary! I'd love to order Palha Italiana 🤍",
   },
   {
     id: "custom",
@@ -71,10 +80,11 @@ const products: Product[] = [
     description:
       "Dreaming of a specific flavor or a themed dessert for your event? Let's create it together.",
     price: "Price on request",
+    image: customImg,
     consult: true,
-    ctaLabel: "Consult Mari",
+    ctaLabel: "Consult Mary",
     waMessage:
-      "Hi Mari! I'd like to chat about a custom flavor or themed order. Could you help me?",
+      "Hi Mary! I'd like to chat about a custom flavor or themed order. Could you help me?",
   },
 ];
 
@@ -87,12 +97,12 @@ const trustItems = [
 
 const steps = [
   { n: "01", title: "Choose your sweet", text: "Browse the menu and pick what makes you smile." },
-  { n: "02", title: "Message Mari", text: "Send your order on WhatsApp — quick and personal." },
+  { n: "02", title: "Message Mary", text: "Send your order on WhatsApp — quick and personal." },
   { n: "03", title: "Enjoy!", text: "Handcrafted with love and delivered to your moment." },
 ];
 
 const aboutFeatures = [
-  { title: "Handcrafted", text: "Every sweet is made by Mari's own hands." },
+  { title: "Handcrafted", text: "Every sweet is made by Mary's own hands." },
   { title: "Premium ingredients", text: "Chocolate, fruits and creams of the finest quality." },
   { title: "Custom orders", text: "Flavors and designs shaped around your story." },
   { title: "Easy ordering", text: "A short message on WhatsApp is all it takes." },
@@ -101,7 +111,7 @@ const aboutFeatures = [
 function Logo({ className = "" }: { className?: string }) {
   return (
     <a href="#top" className={`font-serif text-2xl tracking-tight ${className}`}>
-      Mari's <span className="italic text-[color:var(--rose)]">Sweets</span>
+      Mary's <span className="italic text-[color:var(--rose)]">Bakery</span>
     </a>
   );
 }
@@ -165,7 +175,7 @@ function Navbar() {
           <a href="#how" className="hover:text-[color:var(--rose-deep)] transition-colors">How it works</a>
         </nav>
         <WhatsAppButton
-          href={waLink("Hi Mari! I'd like to place an order 🤍")}
+          href={waLink("Hi Mary! I'd like to place an order 🤍")}
           className="hidden sm:inline-flex"
         >
           Order via WhatsApp
@@ -191,16 +201,16 @@ function Hero() {
             <Sparkles className="w-3.5 h-3.5" /> Handcrafted with love · Est. 2024
           </span>
           <h1 className="mt-6 font-serif text-5xl md:text-6xl lg:text-7xl leading-[1.05] text-[color:var(--chocolate)]">
-            Brazilian sweets
+            Sweets made
             <br />
-            made with <em className="italic text-[color:var(--rose-deep)]">soul</em>
+            with <em className="italic text-[color:var(--rose-deep)]">soul</em>
           </h1>
           <p className="mt-6 max-w-lg text-lg text-[color:var(--chocolate)]/70 leading-relaxed">
-            Tiny batches, generous flavor. Every jar cake and brigadeiro is baked
-            to order by Mari — never from a shelf, always from the heart.
+            Tiny batches, generous flavor. Every jar cake and treat is baked
+            to order by Mary — never from a shelf, always from the heart.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <WhatsAppButton href={waLink("Hi Mari! I'd love to place an order 🤍")}>
+            <WhatsAppButton href={waLink("Hi Mary! I'd love to place an order 🤍")}>
               Place your order <ChevronRight className="w-4 h-4" />
             </WhatsAppButton>
             <a
@@ -216,25 +226,22 @@ function Hero() {
           <div className="relative mx-auto max-w-sm">
             <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-[color:var(--rose-pale)] to-white blur-2xl opacity-80" />
             <div className="relative rounded-[2rem] bg-white p-6 shadow-[0_30px_80px_-30px_rgba(196,48,96,0.4)] border border-[color:var(--border)]">
-              <div
-                className="aspect-square rounded-2xl mb-5"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #fde6ec 0%, #f8c8d4 50%, #e8567a 100%)",
-                  boxShadow: "inset 0 -40px 80px rgba(196,48,96,0.25)",
-                }}
-              >
-                <div className="w-full h-full flex items-center justify-center text-7xl">🍰</div>
-              </div>
+              <img
+                src={nutellaImg}
+                alt="Nutella Jar Cake"
+                width={1024}
+                height={1024}
+                className="aspect-square w-full rounded-2xl mb-5 object-cover"
+              />
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs uppercase tracking-widest text-[color:var(--rose-deep)]">Featured</p>
                   <h3 className="font-serif text-2xl mt-1">Nutella Jar Cake</h3>
                 </div>
-                <span className="font-serif text-2xl text-[color:var(--chocolate)]">R$ 20</span>
+                <span className="font-serif text-2xl text-[color:var(--chocolate)]">$ 20</span>
               </div>
               <WhatsAppButton
-                href={waLink("Hi Mari! I'd love to order the Nutella Jar Cake 🤍")}
+                href={waLink("Hi Mary! I'd love to order the Nutella Jar Cake 🤍")}
                 className="w-full mt-5"
               >
                 Order this one
@@ -274,22 +281,15 @@ function ProductCard({ product }: { product: Product }) {
   const [variant, setVariant] = useState(product.variants?.[0]);
   return (
     <div className="hover-lift group rounded-3xl bg-white border border-[color:var(--border)] p-6 flex flex-col">
-      <div
-        className="relative aspect-[4/3] rounded-2xl mb-5 overflow-hidden"
-        style={{
-          background:
-            product.id === "nutella"
-              ? "linear-gradient(135deg, #f5e0d0 0%, #6b3a2a 100%)"
-              : product.id === "pistachio"
-                ? "linear-gradient(135deg, #e8efd6 0%, #87a878 100%)"
-                : product.id === "palha"
-                  ? "linear-gradient(135deg, #f3dccb 0%, #8b5a3c 100%)"
-                  : "linear-gradient(135deg, #fde6ec 0%, #e8567a 100%)",
-        }}
-      >
-        <div className="absolute inset-0 flex items-center justify-center text-6xl">
-          {product.id === "nutella" ? "🍫" : product.id === "pistachio" ? "🌰" : product.id === "palha" ? "🍬" : "✨"}
-        </div>
+      <div className="relative aspect-[4/3] rounded-2xl mb-5 overflow-hidden">
+        <img
+          src={product.image}
+          alt={product.name}
+          width={1024}
+          height={1024}
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
         {product.badge && (
           <span
             className={`absolute top-3 left-3 text-[10px] uppercase tracking-widest font-medium px-3 py-1 rounded-full ${
@@ -351,7 +351,7 @@ function Menu() {
           </h2>
           <p className="mt-4 text-[color:var(--chocolate)]/65">
             Each sweet is made fresh to order. No shelves, no shortcuts — just the
-            flavors Mari believes in.
+            flavors Mary believes in.
           </p>
         </div>
 
@@ -399,18 +399,17 @@ function About() {
       <div className="mx-auto max-w-6xl px-6 grid lg:grid-cols-2 gap-16 items-center">
         <div className="relative">
           <div className="absolute -inset-4 rounded-[2rem] bg-[color:var(--rose-pale)] -rotate-2" />
-          <div
-            className="relative aspect-[4/5] rounded-[2rem] overflow-hidden"
-            style={{
-              background:
-                "linear-gradient(160deg, #fde6ec 0%, #e8567a 60%, #c43060 100%)",
-            }}
-          >
-            <div className="w-full h-full flex items-center justify-center text-9xl">🌸</div>
-          </div>
+          <img
+            src={aboutImg}
+            alt="Mary preparing a jar cake in her kitchen"
+            width={1024}
+            height={1024}
+            loading="lazy"
+            className="relative aspect-[4/5] w-full rounded-[2rem] object-cover"
+          />
           <div className="absolute -bottom-6 -right-4 bg-white rounded-2xl px-5 py-4 shadow-lg border border-[color:var(--border)]">
-            <p className="font-serif italic text-[color:var(--rose-deep)] text-lg">Hi, I'm Mari</p>
-            <p className="text-xs text-[color:var(--chocolate)]/60 mt-0.5">Confeiteira</p>
+            <p className="font-serif italic text-[color:var(--rose-deep)] text-lg">Hi, I'm Mary</p>
+            <p className="text-xs text-[color:var(--chocolate)]/60 mt-0.5">Baker</p>
           </div>
         </div>
 
@@ -420,8 +419,8 @@ function About() {
             A passion for <em className="italic">confectionery</em>, one jar at a time
           </h2>
           <p className="mt-6 text-[color:var(--chocolate)]/70 leading-relaxed">
-            Mari's Sweets began at home, with a small oven and an even bigger
-            dream: to bring the warmth of Brazilian confectionery to every
+            Mary's Bakery began at home, with a small oven and an even bigger
+            dream: to bring the warmth of homemade confectionery to every
             special moment. Each recipe is tested, refined and made with care —
             the way real desserts should be.
           </p>
@@ -439,10 +438,10 @@ function About() {
           </div>
 
           <WhatsAppButton
-            href={waLink("Hi Mari! I just visited your site and wanted to say hello 🌸")}
+            href={waLink("Hi Mary! I just visited your site and wanted to say hello 🌸")}
             className="mt-10"
           >
-            Say hello to Mari
+            Say hello to Mary
           </WhatsAppButton>
         </div>
       </div>
@@ -463,11 +462,11 @@ function Reviews() {
           <div className="text-5xl mb-4">🌸</div>
           <h3 className="font-serif text-2xl text-[color:var(--chocolate)]">No reviews yet</h3>
           <p className="mt-3 text-[color:var(--chocolate)]/65 max-w-md mx-auto">
-            We're just getting started. If you've tasted Mari's sweets, your
+            We're just getting started. If you've tasted Mary's sweets, your
             words would mean the world.
           </p>
           <WhatsAppButton
-            href={waLink("Hi Mari! I'd love to leave a review about your sweets 🌸")}
+            href={waLink("Hi Mary! I'd love to leave a review about your sweets 🌸")}
             variant="ghost"
             className="mt-7"
           >
@@ -499,7 +498,7 @@ function CTABanner() {
           </h2>
           <div className="relative mt-10 flex flex-wrap gap-3 justify-center">
             <WhatsAppButton
-              href={waLink("Hi Mari! I'd like to place an order for a special moment 🤍")}
+              href={waLink("Hi Mary! I'd like to place an order for a special moment 🤍")}
               variant="white"
             >
               Order on WhatsApp
@@ -523,14 +522,14 @@ function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-12 grid md:grid-cols-3 gap-6 items-center text-sm">
         <Logo className="text-white" />
         <p className="text-center text-white/60">
-          © 2026 Mari's Sweets. All rights reserved. Made with <span className="text-[color:var(--rose)]">🩷</span> by Mari.
+          © 2026 Mary's Bakery. All rights reserved. Made with <span className="text-[color:var(--rose)]">🩷</span> by Mary.
         </p>
         <div className="flex md:justify-end items-center gap-4">
           <span className="inline-flex items-center gap-2 text-white/70">
             <Phone className="w-4 h-4" /> {PHONE_DISPLAY}
           </span>
           <a
-            href={waLink("Hi Mari! 🤍")}
+            href={waLink("Hi Mary! 🤍")}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 text-[color:var(--rose-pale)] hover:text-white transition-colors"
